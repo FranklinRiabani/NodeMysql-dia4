@@ -7,8 +7,10 @@ const { getAllUsers
         ,deleteUser } 
         = require('../controllers/user.controller');
 
+const {verifyToken} = require('../controllers/auth.controller');
+
 // GET all users
-router.get('/',getAllUsers);
+router.get('/',verifyToken,getAllUsers);
 // GET user by ID
 router.get('/:id',getUserById);
 // POST create user

@@ -2,7 +2,9 @@ const express = require('express');
 
 const usermodel = require('../models/user.model');
 
-const getAllUsers = async(req, res) => {
+
+
+const getAllUsers = async(req ,res) => {
     try {
         const users = await usermodel.getAllUsers();
         res.json(users);
@@ -23,7 +25,7 @@ const getUserById = async(req, res) => {
         res.status(500).json({ message: 'Error fetching user' });
     }
 }
-const createUser = (req, res) => {
+const createUser = (req, verifyToken, res) => {
     const user = req.body;
     try {
         const newUser = usermodel.createUser(user);

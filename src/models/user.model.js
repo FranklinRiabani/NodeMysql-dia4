@@ -12,6 +12,20 @@ const getUserById= async(id)=>{
     return rows[0];
 }
 
+
+
+// get user by email and id
+const getUserByEmailID = async(email, id) => {
+    const [rows] = await 
+    db.query('SELECT * FROM users WHERE email = ? AND id = ?', [email, id]);
+    return rows[0];
+}
+
+
+
+
+
+
 //create user
 const createUser= async(user)=>{
     const [rows] = await db.query('INSERT INTO users SET ?', [user]);
@@ -36,6 +50,7 @@ module.exports = {
     getUserById,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getUserByEmailID
 }
 
